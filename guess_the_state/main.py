@@ -22,7 +22,7 @@ while len(guessed_states) < 50:
         state_row = state_data[state_data.state == answer_state]
         t.goto(int(state_row.x), int(state_row.y))
         t.write(answer_state)
-        # t.write(state_row.state.item()) <-- same as the t.write(answer_state) above it
+
 
     if answer_state == "Exit":
         break
@@ -30,8 +30,3 @@ while len(guessed_states) < 50:
 missed_states = [state for state in state_names if state not in guessed_states]
 new_data = pd.DataFrame(missed_states)
 new_data.to_csv("states_to_learn.csv")
-
-# with open("states_to_learn.csv", mode="w") as missed_states:
-#     for state in state_names:
-#         if state not in guessed_states:
-#             missed_states.write(f"{state}\n")
